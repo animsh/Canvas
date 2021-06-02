@@ -96,10 +96,13 @@ class CanvasView(
         )
     }
 
+    fun setBrushColor(color: String) {
+        mColor = Color.parseColor(color)
+        mDrawPaint!!.color = mColor
+    }
+
     internal inner class CustomPath(
         var color: Int,
         var brushThickness: Float
-    ) : Path() {
-
-    }
+    ) : Path()
 }

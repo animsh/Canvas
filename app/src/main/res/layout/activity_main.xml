@@ -1,20 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <com.animsh.canvas.CanvasView
-        android:id="@+id/canvaView"
+        android:id="@+id/canvasView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_above="@id/buttonBrushSize"
+        android:layout_above="@id/colorPalateScrollView"
+        android:layout_below="@id/appName"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="5dp"
         android:background="@drawable/background_canvas" />
+
+    <ScrollView
+        android:id="@+id/colorPalateScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonBrushSize"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/colorPalate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_color_palate"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/color0Skin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/skin"
+                app:tint="@color/skin" />
+
+            <ImageView
+                android:id="@+id/color1Red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/red"
+                app:tint="@color/red" />
+
+            <ImageView
+                android:id="@+id/color3Green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/green"
+                app:tint="@color/green" />
+
+            <ImageView
+                android:id="@+id/color4Blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/blue"
+                app:tint="@color/blue" />
+
+            <ImageView
+                android:id="@+id/color5Yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/yellow"
+                app:tint="@color/yellow" />
+
+            <ImageView
+                android:id="@+id/color6Lollipop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/lollipop"
+                app:tint="@color/lollipop" />
+
+            <ImageView
+                android:id="@+id/color7Purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/purple_500"
+                app:tint="@color/purple_500" />
+
+            <ImageView
+                android:id="@+id/color8Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_color"
+                android:tag="@color/black"
+                app:tint="@color/black" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/buttonBrushSize"
@@ -22,7 +139,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/ic_color"
+        android:backgroundTint="@color/white"
+        android:elevation="4dp"
+        android:padding="10dp"
         android:src="@drawable/ic_brush" />
 
 </RelativeLayout>
