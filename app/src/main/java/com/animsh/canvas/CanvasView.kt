@@ -22,6 +22,7 @@ class CanvasView(
     private var mBrushSize: Float = 0.toFloat()
     private var mColor = Color.BLACK
     private var canvas: Canvas? = null
+    private var mPathList = ArrayList<CustomPath>()
 
     init {
         setupCanvasView()
@@ -50,6 +51,11 @@ class CanvasView(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
+        for (availablePath in mPathList) {
+            mDrawPaint!!.strokeWidth = availablePath.brushThickness
+            mDrawPaint!!.color = availablePath.color
+            canvas.drawPath(availablePath, mDrawPaint!!)
+        }
         if (!mDrawPath!!.isEmpty) {
             mDrawPaint!!.strokeWidth = mDrawPath!!.brushThickness
             mDrawPaint!!.color = mDrawPath!!.color
@@ -72,6 +78,7 @@ class CanvasView(
                 mDrawPath!!.lineTo(touchX!!, touchY!!)
             }
             MotionEvent.ACTION_UP -> {
+                mPathList.add(mDrawPath!!)
                 mDrawPath = CustomPath(mColor, mBrushSize)
             }
             else -> return false
