@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 
@@ -86,6 +87,13 @@ class CanvasView(
         invalidate()
         return true
 
+    }
+
+    fun setBrushSize(size: Float) {
+        mBrushSize = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            size, resources.displayMetrics
+        )
     }
 
     internal inner class CustomPath(
