@@ -19,8 +19,7 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <com.animsh.canvas.CanvasView
-        android:id="@+id/canvasView"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_above="@id/colorPalateScrollView"
@@ -28,7 +27,31 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="5dp"
-        android:background="@drawable/background_canvas" />
+        android:elevation="2dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/canvasImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_canvas"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+            <com.animsh.canvas.CanvasView
+                android:id="@+id/canvasView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0FFFFFFF" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <ScrollView
         android:id="@+id/colorPalateScrollView"
