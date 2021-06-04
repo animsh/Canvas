@@ -46,6 +46,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 requestStoragePermission()
             }
         }
+
+        buttonUndoStep.setOnClickListener {
+            canvasView.undoSteps()
+        }
+
+        buttonRedoStep.setOnClickListener {
+            canvasView.redoSteps()
+        }
     }
 
     override fun onClick(view: View?) {

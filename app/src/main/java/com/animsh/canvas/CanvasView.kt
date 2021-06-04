@@ -24,6 +24,7 @@ class CanvasView(
     private var mColor = Color.BLACK
     private var canvas: Canvas? = null
     private var mPathList = ArrayList<CustomPath>()
+    private var mUndoList = ArrayList<CustomPath>()
 
     init {
         setupCanvasView()
@@ -99,6 +100,20 @@ class CanvasView(
     fun setBrushColor(color: String) {
         mColor = Color.parseColor(color)
         mDrawPaint!!.color = mColor
+    }
+
+    fun undoSteps() {
+        if (mPathList.isNotEmpty()) {
+            mUndoList.add(mPathList.removeAt(mPathList.size - 1))
+            invalidate()
+        }
+    }
+
+    fun redoSteps() {
+        if (mUndoList.isNotEmpty()) {
+            mPathList.add(mUndoList.removeAt(mUndoList.size - 1))
+            invalidate()
+        }
     }
 
     internal inner class CustomPath(
