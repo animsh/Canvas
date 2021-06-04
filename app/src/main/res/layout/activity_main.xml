@@ -57,7 +57,7 @@
         android:id="@+id/colorPalateScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/buttonBrushSize"
+        android:layout_above="@id/extraButtonsContainer"
         android:layout_centerHorizontal="true">
 
         <LinearLayout
@@ -152,21 +152,38 @@
                 app:tint="@color/black" />
 
         </LinearLayout>
-
-
     </ScrollView>
 
-    <ImageButton
-        android:id="@+id/buttonBrushSize"
+    <LinearLayout
+        android:id="@+id/extraButtonsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/ic_color"
-        android:backgroundTint="@color/white"
-        android:elevation="4dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_brush" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/buttonAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_color"
+            android:backgroundTint="@color/white"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_add_photo" />
+
+        <ImageButton
+            android:id="@+id/buttonBrushSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_color"
+            android:backgroundTint="@color/white"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_brush" />
+
+    </LinearLayout>
 
 </RelativeLayout>
