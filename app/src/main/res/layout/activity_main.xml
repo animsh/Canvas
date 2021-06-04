@@ -33,15 +33,15 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/background_canvas">
 
             <ImageView
                 android:id="@+id/canvasImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_canvas"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:visibility="gone" />
 
             <com.animsh.canvas.CanvasView
                 android:id="@+id/canvasView"

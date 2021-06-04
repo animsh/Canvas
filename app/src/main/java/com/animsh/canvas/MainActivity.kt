@@ -1,10 +1,13 @@
 package com.animsh.canvas
 
 import android.Manifest
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         const val STORAGE_PERMISSION = 1
+        const val GALLERY_INTENT = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,22 +33,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             showBrushSizeDialog(canvasView, this)
         }
 
-        colorPalate[0].setOnClickListener(this)
-        colorPalate[1].setOnClickListener(this)
-        colorPalate[2].setOnClickListener(this)
-        colorPalate[3].setOnClickListener(this)
-        colorPalate[4].setOnClickListener(this)
-        colorPalate[5].setOnClickListener(this)
-        colorPalate[6].setOnClickListener(this)
-        colorPalate[7].setOnClickListener(this)
+        for (i in 0..7) {
+            colorPalate[i].setOnClickListener(this)
+        }
 
         buttonAddImage.setOnClickListener {
             if (isStoragePermissionGranted()) {
-                Toast.makeText(
-                    this,
-                    "Permission is Granted",
-                    Toast.LENGTH_LONG
-                ).show()
+                val galleryIntent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(galleryIntent, GALLERY_INTENT)
             } else {
                 requestStoragePermission()
             }
@@ -76,6 +73,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "Permission is denied!!",
                     Toast.LENGTH_LONG
                 ).show()
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == GALLERY_INTENT) {
+                try {
+                    if (data!!.data != null) {
+                        canvasImage.visibility = View.VISIBLE
+                        canvasImage.setImageURI(data.data)
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Error in parsing image or it's corrupted",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }
