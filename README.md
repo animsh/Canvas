@@ -1,5 +1,4 @@
 <p align="center">
-<img src="previews/icon.png" width="15%"/>
 <h1 align="center">Canvas - Simple Drawing Application</h1>
 </p>
 
@@ -16,8 +15,6 @@
 ## Download
 
 Go to the [Releases](https://github.com/animsh/Canvas/releases) to download the latest APK.
-
-<img src="previews/preview.gif" align="right" width="20%"/>
 
 ## Find this repository useful? :heart:
 
